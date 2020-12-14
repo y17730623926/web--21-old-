@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后端是老师的端口</title>
+</head>
+<body>
+    <script src="./插件/jQuery1.12.4.js"></script>
+    <script>
+        //同步
+            // // 1.创建实例对象
+            // var ajax = new XMLHttpRequest();
+            // // 2规划请求地址
+            // ajax.open("GET","http://192.168.1.114:9123",false);
+            // // 3.发送请求
+            // ajax.send();
+            // // 4.接受请求地址返回的数据
+            // var a = ajax.response;
+            // console.log(a);
+        //异步
+        //     // 1.创建实例对象
+        //     var ajax = new XMLHttpRequest();
+        //     // 2规划请求地址
+        //     ajax.open("GET","http://192.168.1.114:9123?callback=getJSON",true);
+        //     // 3.发送请求
+        //     ajax.send();
+        //     // 4.监听请求
+        //     ajax.onreadystatechange = function () {
+        //         if (ajax.readyState === 4) {    //请求的返回是否完毕
+        //             if (ajax.status === 200 || ajax.status === 303) {
+        //                 // 获取ajax返回的数据
+        //                 var data = ajax.response;
+        //                 // 把返回的JSON转换为js对象/数组    (返回的数据如果不是JSON支持的数据结构就会报错)
+        //                 data = JSON.parse(data);
+        //                 console.log(data);
+        //             }
+        //         }
+        // }
+        //jQuery写ajax
+        function fn() {
+
+        }
+            $.ajax({
+                url :"http://192.168.1.114:9123/",
+                data :{},
+                type :"GET",     //请求方式
+                dataType :"jsonp",   //是否开启jsonp解决跨域
+                success : function (data) {    //请求成功执行的回调函数
+                    // 要执行的语句  data为后端传递的参数
+                    console.log(data);
+                },
+                error : function () {
+                    console.log("请求失败的回调函数");
+                },
+                // jsonp: "改变callback",
+                // jsonpCallback: "改变回调函数名",
+                complete : function () {
+                    console.log("不管请求成功还是失败都会执行的回调函数");
+                }
+            })
+    </script>
+    <!-- <script>
+        function getJSON(a) {
+            console.log(a);
+        }
+    </script>
+    <script src="http://192.168.1.114:9123?callback=getJSON"></script> -->
+</body>
+</html>
